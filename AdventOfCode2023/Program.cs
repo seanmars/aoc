@@ -6,7 +6,8 @@ try
     IDay day;
 
     // day = new Day1();
-    day = new Day2();
+    // day = new Day2();
+    day = new Day3();
 
     day.GetResult();
 }
