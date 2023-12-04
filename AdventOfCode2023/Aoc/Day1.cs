@@ -7,7 +7,7 @@ public class Day1 : IDay
 {
     private int SolvePart1()
     {
-        var lines = DataLoader.LoadToLines("data/Day1.txt");
+        var lines = DataLoader.LoadToLines("data/day1_input.txt");
 
         var numbers = lines.Select(l =>
             {
@@ -84,8 +84,13 @@ public class Day1 : IDay
         return numbers.Sum();
     }
 
-    public object Solve()
+    public object Solve(int part)
     {
-        return SolvePart2();
+        return part switch
+        {
+            1 => SolvePart1(),
+            2 => SolvePart2(),
+            _ => throw new NotImplementedException()
+        };
     }
 }

@@ -83,7 +83,7 @@ public class Day2 : IDay
         const int targetGreen = 13;
         const int targetBlue = 14;
 
-        var lines = DataLoader.LoadToLines("data/Day2.txt");
+        var lines = DataLoader.LoadToLines("data/day2_input.txt");
 
         var games = new List<Game>();
         foreach (var line in lines)
@@ -113,7 +113,7 @@ public class Day2 : IDay
     {
         // 計算每場 game 所需要的最大各色 cube 數量，並將其相乘後為該 game 的 power number
         // 計算所有 game 的 power number 總和
-        var lines = DataLoader.LoadToLines("data/Day2.txt");
+        var lines = DataLoader.LoadToLines("data/day2_input.txt");
 
         var games = new List<Game>();
         foreach (var line in lines)
@@ -126,9 +126,13 @@ public class Day2 : IDay
         return sumOfPowerNumbers;
     }
 
-    public object Solve()
+    public object Solve(int part)
     {
-        // return SolvePart1();
-        return SolvePart2();
+        return part switch
+        {
+            1 => SolvePart1(),
+            2 => SolvePart2(),
+            _ => throw new NotImplementedException()
+        };
     }
 }

@@ -2,11 +2,11 @@
 
 public interface IDay
 {
-    public object Solve();
+    public object Solve(int part);
 
-    public void GetResult()
+    public void GetResult(int part)
     {
-        var answer = Solve();
+        var answer = Solve(part);
         Logger.Log(answer);
     }
 }

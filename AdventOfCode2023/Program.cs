@@ -7,9 +7,10 @@ try
 
     // day = new Day1();
     // day = new Day2();
-    day = new Day3();
+    // day = new Day3();
+    day = new Day4();
 
-    day.GetResult();
+    day.GetResult(2);
 }
 catch (Exception e)
 {

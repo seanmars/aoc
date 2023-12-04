@@ -31,7 +31,7 @@ public class Day3 : IDay
 
     public Day3()
     {
-        _input = File.ReadAllLines("data/Day3.txt");
+        _input = File.ReadAllLines("data/day3_input.txt");
         (_allSymbols, _symbolPoints) = FindAllSymbolsFormInput(_input);
         _numberPoints = FindNumberFormInput(_input);
     }
@@ -140,6 +140,11 @@ public class Day3 : IDay
         return sum;
     }
 
+    private int FindOverlapping(int start1, int end1, int start2, int end2)
+    {
+        return Math.Max(0, Math.Min(end1, end2) - Math.Max(start1, start2) + 1);
+    }
+
     private object SolvePart2()
     {
         var lines = _input.ToImmutableList();
@@ -161,7 +166,7 @@ public class Day3 : IDay
             // 判斷周圍的數字
             var nps = _numberPoints.Where(np =>
                     (np.Line >= startLine && np.Line <= endLine) &&
-                    ((start <= np.Start && end >= np.Start) || (start <= np.End - 1 && end >= np.End - 1))
+                    (FindOverlapping(start, end, np.Start, np.End - 1) > 0)
                 )
                 .ToList();
 
@@ -173,8 +178,13 @@ public class Day3 : IDay
         return sum;
     }
 
-    public object Solve()
+    public object Solve(int part)
     {
-        return SolvePart2();
+        return part switch
+        {
+            1 => SolvePart1(),
+            2 => SolvePart2(),
+            _ => throw new NotImplementedException()
+        };
     }
 }
